@@ -4,187 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Central Coast SA2 Dashboard</title>
-
-  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #222; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #222; height: 100vh; overflow: hidden; }
 
     header {
-      background: #003366;
-      color: white;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      background: #003366; color: white;
+      padding: 12px 20px; display: flex; align-items: center; gap: 16px;
+      height: 50px;
     }
-    header h1 { font-size: 1.2rem; font-weight: 600; }
-    header span { font-size: 0.85rem; opacity: 0.7; }
+    header h1 { font-size: 1.1rem; font-weight: 600; }
+    header span { font-size: 0.8rem; opacity: 0.65; }
 
     .layout {
       display: grid;
-      grid-template-columns: 340px 1fr;
-      grid-template-rows: auto 1fr;
-      height: calc(100vh - 52px);
+      grid-template-columns: 300px 1fr 320px;
+      height: calc(100vh - 50px);
     }
 
-    /* ── Left panel ── */
+    /* ── Sidebar ── */
     .sidebar {
-      grid-row: 1 / 3;
-      background: white;
-      border-right: 1px solid #dde;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      background: white; border-right: 1px solid #dde;
+      display: flex; flex-direction: column; overflow: hidden;
     }
-
-    .sidebar-section {
-      padding: 14px 16px;
-      border-bottom: 1px solid #eee;
-    }
-    .sidebar-section h3 { font-size: 0.78rem; text-transform: uppercase; color: #666; letter-spacing: .05em; margin-bottom: 8px; }
-
-    #indicator-select, #sa2-select {
-      width: 100%;
-      padding: 7px 10px;
-      border: 1px solid #ccd;
-      border-radius: 6px;
-      font-size: 0.88rem;
-      background: #fafafa;
-    }
-
-    .kpi-panel {
-      flex: 1;
-      overflow-y: auto;
-      padding: 12px 16px;
-    }
-
-    .kpi-sa2-name {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #003366;
-      margin-bottom: 2px;
-    }
-    .kpi-sa3-name { font-size: 0.78rem; color: #888; margin-bottom: 12px; }
-
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .kpi-card {
-      background: #f7f9fc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 10px 12px;
-    }
-    .kpi-card .label { font-size: 0.72rem; color: #666; line-height: 1.3; margin-bottom: 4px; }
-    .kpi-card .value { font-size: 1.1rem; font-weight: 700; color: #003366; }
-    .kpi-card .unit { font-size: 0.7rem; color: #999; }
-
-    .radar-wrap {
-      padding: 12px 16px 16px;
-      border-top: 1px solid #eee;
-    }
-    .radar-wrap h3 { font-size: 0.78rem; text-transform: uppercase; color: #666; letter-spacing: .05em; margin-bottom: 8px; }
-    #radarChart { max-height: 220px; }
+    .sidebar-section { padding: 12px 14px; border-bottom: 1px solid #eee; }
+    .sidebar-section h3 { font-size: 0.72rem; text-transform: uppercase; color: #666; letter-spacing: .05em; margin-bottom: 7px; }
+    select { width: 100%; padding: 6px 8px; border: 1px solid #ccd; border-radius: 5px; font-size: 0.84rem; background: #fafafa; }
+    .kpi-panel { flex: 1; overflow-y: auto; padding: 10px 14px; }
+    .kpi-sa2-name { font-size: 0.95rem; font-weight: 700; color: #003366; margin-bottom: 2px; }
+    .kpi-sa3-name { font-size: 0.75rem; color: #888; margin-bottom: 10px; }
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .kpi-card { background: #f7f9fc; border: 1px solid #e2e8f0; border-radius: 7px; padding: 8px 10px; }
+    .kpi-card .label { font-size: 0.68rem; color: #666; line-height: 1.3; margin-bottom: 3px; }
+    .kpi-card .value { font-size: 1rem; font-weight: 700; color: #003366; }
+    .radar-wrap { padding: 10px 14px 14px; border-top: 1px solid #eee; }
+    .radar-wrap h3 { font-size: 0.72rem; text-transform: uppercase; color: #666; letter-spacing: .05em; margin-bottom: 7px; }
+    #radarChart { max-height: 200px; }
+    .placeholder { color: #aaa; font-style: italic; font-size: 0.82rem; padding: 16px 0; }
 
     /* ── Map ── */
-    #map {
-      grid-column: 2;
-      grid-row: 1 / 3;
+    #map { position: relative; }
+
+    /* ── Bar chart panel ── */
+    .bar-panel {
+      background: white; border-left: 1px solid #dde;
+      display: flex; flex-direction: column; overflow: hidden;
     }
+    .bar-panel-header {
+      padding: 12px 14px; border-bottom: 1px solid #eee;
+      font-size: 0.8rem; font-weight: 600; color: #003366;
+    }
+    .bar-panel-header span { font-size: 0.7rem; font-weight: 400; color: #888; display: block; margin-top: 2px; }
+    #barChartWrap { flex: 1; overflow: hidden; padding: 10px 14px; }
+    #barChart { width: 100% !important; }
+
+    /* Legend */
+    .legend { background: white; padding: 8px 10px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.15); font-size: 0.75rem; line-height: 1.9; }
+    .legend-title { font-weight: 700; margin-bottom: 3px; font-size: 0.77rem; }
+    .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
 
     /* ── AI Q&A ── */
     .qa-panel {
-      position: fixed;
-      bottom: 0; right: 0;
-      width: 400px;
-      background: white;
-      border-top: 2px solid #003366;
-      border-left: 1px solid #dde;
-      box-shadow: -2px -2px 12px rgba(0,0,0,0.1);
-      z-index: 1000;
+      position: fixed; bottom: 0; right: 0; width: 370px;
+      background: white; border-top: 2px solid #003366; border-left: 1px solid #dde;
+      box-shadow: -2px -2px 12px rgba(0,0,0,0.1); z-index: 1000;
     }
     .qa-header {
-      background: #003366;
-      color: white;
-      padding: 10px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
+      background: #003366; color: white; padding: 9px 14px;
+      display: flex; justify-content: space-between; align-items: center; cursor: pointer;
     }
-    .qa-header span { font-size: 0.88rem; font-weight: 600; }
-    .qa-body { padding: 12px; display: none; }
+    .qa-header span { font-size: 0.85rem; font-weight: 600; }
+    .qa-body { padding: 10px 12px; display: none; }
     .qa-body.open { display: block; }
     #qa-messages {
-      min-height: 80px;
-      max-height: 220px;
-      overflow-y: auto;
-      font-size: 0.82rem;
-      margin-bottom: 10px;
-      background: #f9fafb;
-      border: 1px solid #eee;
-      border-radius: 6px;
-      padding: 8px;
+      min-height: 70px; max-height: 200px; overflow-y: auto;
+      font-size: 0.8rem; margin-bottom: 8px;
+      background: #f9fafb; border: 1px solid #eee; border-radius: 5px; padding: 7px;
     }
-    .qa-msg-user { color: #003366; font-weight: 600; margin-bottom: 4px; }
-    .qa-msg-ai { color: #333; margin-bottom: 8px; line-height: 1.5; }
+    .qa-msg-user { color: #003366; font-weight: 600; margin-bottom: 3px; }
+    .qa-msg-ai { color: #333; margin-bottom: 7px; line-height: 1.5; }
     .qa-row { display: flex; gap: 6px; }
-    #qa-input {
-      flex: 1;
-      padding: 8px 10px;
-      border: 1px solid #ccd;
-      border-radius: 6px;
-      font-size: 0.85rem;
-    }
-    #qa-send {
-      background: #003366;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 8px 14px;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
+    #qa-input { flex: 1; padding: 7px 9px; border: 1px solid #ccd; border-radius: 5px; font-size: 0.82rem; }
+    #qa-send { background: #003366; color: white; border: none; border-radius: 5px; padding: 7px 12px; font-size: 0.82rem; cursor: pointer; }
     #qa-send:hover { background: #004a99; }
-    #qa-key-row { margin-top: 8px; }
-    #qa-api-key {
-      width: 100%;
-      padding: 6px 8px;
-      font-size: 0.78rem;
-      border: 1px solid #ccd;
-      border-radius: 6px;
-      font-family: monospace;
-    }
-    .qa-hint { font-size: 0.72rem; color: #999; margin-top: 4px; }
-
-    /* Legend */
-    .legend {
-      background: white;
-      padding: 8px 12px;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-      font-size: 0.78rem;
-      line-height: 1.8;
-    }
-    .legend-title { font-weight: 700; margin-bottom: 4px; font-size: 0.8rem; }
-    .legend i {
-      display: inline-block;
-      width: 14px; height: 14px;
-      border-radius: 2px;
-      margin-right: 5px;
-      vertical-align: middle;
-    }
-
-    .placeholder { color: #aaa; font-style: italic; font-size: 0.85rem; padding: 20px 0; }
+    .qa-key-row { margin-top: 7px; display: flex; gap: 6px; align-items: center; }
+    #qa-api-key { flex: 1; padding: 5px 8px; font-size: 0.75rem; border: 1px solid #ccd; border-radius: 5px; font-family: monospace; }
+    .qa-key-save { background: #eee; border: 1px solid #ccd; border-radius: 5px; padding: 5px 9px; font-size: 0.75rem; cursor: pointer; white-space: nowrap; }
+    .qa-key-save:hover { background: #ddd; }
+    .qa-hint { font-size: 0.68rem; color: #aaa; margin-top: 3px; }
   </style>
 </head>
 <body>
@@ -192,7 +102,7 @@
 <header>
   <div>
     <h1>Central Coast Council — SA2 Economic Dashboard</h1>
-    <span>Prototype v0.1 · Data as at various dates · For internal use only</span>
+    <span>Prototype v0.1 · For internal use only</span>
   </div>
 </header>
 
@@ -200,32 +110,36 @@
 
   <!-- ── Sidebar ── -->
   <div class="sidebar">
-
     <div class="sidebar-section">
-      <h3>Map Indicator</h3>
+      <h3>Map &amp; Chart Indicator</h3>
       <select id="indicator-select"></select>
     </div>
-
     <div class="sidebar-section">
       <h3>View SA2 Details</h3>
-      <select id="sa2-select">
-        <option value="">— Click map or select —</option>
-      </select>
+      <select id="sa2-select"><option value="">— Click map or select —</option></select>
     </div>
-
     <div class="kpi-panel" id="kpi-panel">
       <p class="placeholder">Select an SA2 to view indicators</p>
     </div>
-
     <div class="radar-wrap" id="radar-wrap" style="display:none">
       <h3>Key Indicators (percentile rank)</h3>
       <canvas id="radarChart"></canvas>
     </div>
-
   </div>
 
   <!-- ── Map ── -->
   <div id="map"></div>
+
+  <!-- ── Bar Chart Panel ── -->
+  <div class="bar-panel">
+    <div class="bar-panel-header">
+      SA2 Ranking
+      <span id="bar-title">Select an indicator</span>
+    </div>
+    <div id="barChartWrap">
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
 
 </div>
 
@@ -238,169 +152,214 @@
   <div class="qa-body" id="qa-body">
     <div id="qa-messages"><span class="placeholder">Ask anything about Central Coast SA2 data...</span></div>
     <div class="qa-row">
-      <input type="text" id="qa-input" placeholder="e.g. Which SA2 has the highest unemployment rate?" onkeydown="if(event.key==='Enter')sendQA()" />
+      <input type="text" id="qa-input" placeholder="e.g. Which SA2 has the highest unemployment?" onkeydown="if(event.key==='Enter')sendQA()" />
       <button id="qa-send" onclick="sendQA()">Ask</button>
     </div>
-    <div id="qa-key-row">
-      <input type="password" id="qa-api-key" placeholder="Paste OpenAI API key (sk-...)..." />
-      <p class="qa-hint">Key stays in your browser only — never sent to our servers.</p>
+    <div class="qa-key-row">
+      <input type="password" id="qa-api-key" placeholder="OpenAI API key (sk-…)" />
+      <button class="qa-key-save" onclick="saveKey()">Save key</button>
     </div>
+    <p class="qa-hint" id="qa-key-hint">Key saved in browser only — never sent to our servers.</p>
   </div>
 </div>
 
-<!-- Data -->
 <script src="data.js"></script>
-
 <script>
-// ── CONFIG ──────────────────────────────────────────────
+// ── CONFIG ──────────────────────────────────────────────────────────
 const INDICATOR_LABELS = {
-  'Unemployment Rate (%)': { label: 'Unemployment Rate', unit: '%', format: v => v.toFixed(1)+'%', category: 'Economy' },
-  'JobSeeker Payment': { label: 'Jobseekers', unit: 'recipients', format: v => v.toLocaleString(), category: 'Social' },
-  'House Price (Current)': { label: 'Median House Price', unit: '$', format: v => '$'+Math.round(v/1000)+'k', category: 'Housing' },
-  'Unit Price (Current)': { label: 'Median Unit Price', unit: '$', format: v => '$'+Math.round(v/1000)+'k', category: 'Housing' },
-  'House Rent (P/W)': { label: 'House Rent (p/w)', unit: '$/wk', format: v => '$'+v.toFixed(0), category: 'Housing' },
-  'Unit Rent (P/W)': { label: 'Unit Rent (p/w)', unit: '$/wk', format: v => '$'+v.toFixed(0), category: 'Housing' },
-  'Total Spend': { label: 'Retail Spend', unit: '$', format: v => '$'+Math.round(v/1e6).toFixed(1)+'M', category: 'Economy' },
-  'Total Businesses': { label: 'Business Count', unit: 'businesses', format: v => v.toLocaleString(), category: 'Economy' },
-  'Number of dwellings approved': { label: 'Dwelling Approvals', unit: 'dwellings', format: v => v.toFixed(0), category: 'Housing' },
-  'Age Pension': { label: 'Age Pension', unit: 'recipients', format: v => v.toLocaleString(), category: 'Social' },
-  'Disability Support Pension': { label: 'Disability Support', unit: 'recipients', format: v => v.toLocaleString(), category: 'Social' },
-  'Commonwealth Rent Assistance': { label: 'Rent Assistance', unit: 'recipients', format: v => v.toLocaleString(), category: 'Social' },
-  'ERP at 30 June 2024': { label: 'Population (2024)', unit: 'persons', format: v => v.toLocaleString(), category: 'Population' },
-  'Population density 2024 (persons/km2)': { label: 'Pop. Density', unit: 'p/km²', format: v => v.toFixed(1), category: 'Population' },
-  'Index of Relative Socio-economic Disadvantage ': { label: 'SEIFA Disadvantage', unit: 'index', format: v => v.toFixed(0), category: 'Social' },
-  'Index of Economic Resources': { label: 'SEIFA Econ Resources', unit: 'index', format: v => v.toFixed(0), category: 'Social' },
-  'Listing Visits per Property': { label: 'Listing Visits/Property', unit: 'visits', format: v => v.toFixed(0), category: 'Housing' },
+  'Unemployment Rate (%)':                          { label: 'Unemployment Rate',         unit: '%',    fmt: v => v.toFixed(1)+'%',                   cat: 'Economy' },
+  'JobSeeker Payment':                              { label: 'Jobseekers',                unit: 'ppl',  fmt: v => v.toLocaleString(),                  cat: 'Social' },
+  'House Price (Current)':                          { label: 'Median House Price',         unit: '$',    fmt: v => '$'+Math.round(v/1000)+'k',          cat: 'Housing' },
+  'Unit Price (Current)':                           { label: 'Median Unit Price',          unit: '$',    fmt: v => '$'+Math.round(v/1000)+'k',          cat: 'Housing' },
+  'House Rent (P/W)':                               { label: 'House Rent (p/w)',           unit: '$/wk', fmt: v => '$'+v.toFixed(0),                   cat: 'Housing' },
+  'Unit Rent (P/W)':                                { label: 'Unit Rent (p/w)',            unit: '$/wk', fmt: v => '$'+v.toFixed(0),                   cat: 'Housing' },
+  'Total Spend':                                    { label: 'Retail Spend',               unit: '$',    fmt: v => '$'+Math.round(v/1e6).toFixed(1)+'M', cat: 'Economy' },
+  'Total Businesses':                               { label: 'Business Count',             unit: '',     fmt: v => v.toLocaleString(),                  cat: 'Economy' },
+  'Number of dwellings approved':                   { label: 'Dwelling Approvals',         unit: '',     fmt: v => v.toFixed(0),                        cat: 'Housing' },
+  'Value of building job(s)':                       { label: 'Building Value',             unit: '$',    fmt: v => '$'+Math.round(v/1e6).toFixed(1)+'M', cat: 'Housing' },
+  'Age Pension':                                    { label: 'Age Pension',                unit: 'ppl',  fmt: v => v.toLocaleString(),                  cat: 'Social' },
+  'Disability Support Pension':                     { label: 'Disability Support',         unit: 'ppl',  fmt: v => v.toLocaleString(),                  cat: 'Social' },
+  'Commonwealth Rent Assistance':                   { label: 'Rent Assistance',            unit: 'ppl',  fmt: v => v.toLocaleString(),                  cat: 'Social' },
+  'ERP at 30 June 2024':                            { label: 'Population (2024)',          unit: 'ppl',  fmt: v => v.toLocaleString(),                  cat: 'Population' },
+  'Population density 2024 (persons/km2)':          { label: 'Pop. Density (p/km²)',       unit: 'p/km²',fmt: v => v.toFixed(1),                       cat: 'Population' },
+  'Index of Relative Socio-economic Disadvantage ': { label: 'SEIFA Disadvantage Index',  unit: '',     fmt: v => v.toFixed(0),                        cat: 'Social' },
+  'Index of Economic Resources':                    { label: 'SEIFA Econ Resources',       unit: '',     fmt: v => v.toFixed(0),                        cat: 'Social' },
+  'Listing Visits per Property':                    { label: 'Listing Visits/Property',    unit: '',     fmt: v => v.toFixed(0),                        cat: 'Housing' },
 };
 
-const RADAR_INDICATORS = [
-  'Unemployment Rate (%)',
-  'JobSeeker Payment',
-  'House Price (Current)',
-  'Total Spend',
-  'Index of Relative Socio-economic Disadvantage ',
-  'Total Businesses',
-  'Number of dwellings approved',
-  'ERP at 30 June 2024',
+const RADAR_KEYS = [
+  'Unemployment Rate (%)', 'JobSeeker Payment', 'House Price (Current)',
+  'Total Spend', 'Index of Relative Socio-economic Disadvantage ',
+  'Total Businesses', 'Number of dwellings approved', 'ERP at 30 June 2024',
 ];
 
-const CHOROPLETH_COLORS = ['#f7fbff','#c6dbef','#6baed6','#2171b5','#084594'];
+// Red–Yellow–Blue diverging scale (high=red, low=blue)
+const COLORS = ['#2166ac','#74add1','#ffffbf','#fdae61','#d73027'];
 
-// ── STATE ───────────────────────────────────────────────
-let geojsonLayer, selectedIndicator, selectedSA2Code, radarChart;
+// ── STATE ────────────────────────────────────────────────────────────
+let geojsonLayer, selectedIndicator, selectedSA2Code, radarChart, barChart;
 const sa2Map = {};
 SA2_DATA.forEach(r => { sa2Map[String(r['SA2 Code'])] = r; });
 
-// ── INDICATOR SELECT ────────────────────────────────────
+// ── INDICATOR SELECT ─────────────────────────────────────────────────
 const indSel = document.getElementById('indicator-select');
-const categories = {};
-Object.entries(INDICATOR_LABELS).forEach(([key, meta]) => {
-  if (!categories[meta.category]) categories[meta.category] = [];
-  categories[meta.category].push({ key, meta });
-});
-Object.entries(categories).forEach(([cat, items]) => {
-  const grp = document.createElement('optgroup');
-  grp.label = cat;
-  items.forEach(({ key, meta }) => {
-    const opt = document.createElement('option');
-    opt.value = key;
-    opt.textContent = meta.label;
-    grp.appendChild(opt);
-  });
-  indSel.appendChild(grp);
+const cats = {};
+Object.entries(INDICATOR_LABELS).forEach(([k,m]) => { (cats[m.cat] = cats[m.cat]||[]).push({k,m}); });
+Object.entries(cats).forEach(([cat, items]) => {
+  const g = document.createElement('optgroup'); g.label = cat;
+  items.forEach(({k,m}) => { const o = document.createElement('option'); o.value=k; o.textContent=m.label; g.appendChild(o); });
+  indSel.appendChild(g);
 });
 selectedIndicator = Object.keys(INDICATOR_LABELS)[0];
 indSel.value = selectedIndicator;
-indSel.addEventListener('change', () => { selectedIndicator = indSel.value; updateChoropleth(); });
+indSel.addEventListener('change', () => { selectedIndicator = indSel.value; updateChoropleth(); updateBarChart(); });
 
-// ── SA2 SELECT ──────────────────────────────────────────
+// ── SA2 SELECT ────────────────────────────────────────────────────────
 const sa2Sel = document.getElementById('sa2-select');
-SA2_DATA.sort((a,b) => a['SA2 Name'].localeCompare(b['SA2 Name'])).forEach(r => {
-  const opt = document.createElement('option');
-  opt.value = String(r['SA2 Code']);
-  opt.textContent = r['SA2 Name'];
-  sa2Sel.appendChild(opt);
+[...SA2_DATA].sort((a,b)=>a['SA2 Name'].localeCompare(b['SA2 Name'])).forEach(r => {
+  const o = document.createElement('option'); o.value = String(r['SA2 Code']); o.textContent = r['SA2 Name']; sa2Sel.appendChild(o);
 });
 sa2Sel.addEventListener('change', () => selectSA2(sa2Sel.value));
 
-// ── MAP ─────────────────────────────────────────────────
+// ── MAP ────────────────────────────────────────────────────────────────
 const map = L.map('map').setView([-33.35, 151.3], 10);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors', maxZoom: 18
-}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 18 }).addTo(map);
 
-// Legend
 const legend = L.control({ position: 'bottomright' });
 legend.onAdd = () => { const d = L.DomUtil.create('div','legend'); d.id='map-legend'; return d; };
 legend.addTo(map);
 
-function getColor(value, min, max) {
-  if (value == null || isNaN(value)) return '#cccccc';
-  const t = Math.max(0, Math.min(1, (value - min) / (max - min || 1)));
-  const i = Math.floor(t * (CHOROPLETH_COLORS.length - 1));
-  return CHOROPLETH_COLORS[i];
+function getColor(v, min, max) {
+  if (v == null || isNaN(v)) return '#cccccc';
+  const t = Math.max(0, Math.min(1, (v-min)/(max-min||1)));
+  const i = Math.floor(t * (COLORS.length-1));
+  const lo = COLORS[i], hi = COLORS[Math.min(i+1, COLORS.length-1)];
+  const f = t*(COLORS.length-1) - i;
+  const hex = (c1,c2,f) => {
+    const r1=parseInt(c1.slice(1,3),16), g1=parseInt(c1.slice(3,5),16), b1=parseInt(c1.slice(5,7),16);
+    const r2=parseInt(c2.slice(1,3),16), g2=parseInt(c2.slice(3,5),16), b2=parseInt(c2.slice(5,7),16);
+    return `rgb(${Math.round(r1+f*(r2-r1))},${Math.round(g1+f*(g2-g1))},${Math.round(b1+f*(b2-b1))})`;
+  };
+  return hex(lo, hi, f);
 }
 
 function updateChoropleth() {
-  const values = SA2_DATA.map(r => r[selectedIndicator]).filter(v => v != null && !isNaN(v));
-  const min = Math.min(...values), max = Math.max(...values);
-  const meta = INDICATOR_LABELS[selectedIndicator] || { label: selectedIndicator, format: v => v };
+  const vals = SA2_DATA.map(r=>r[selectedIndicator]).filter(v=>v!=null&&!isNaN(v));
+  const min=Math.min(...vals), max=Math.max(...vals);
+  const meta = INDICATOR_LABELS[selectedIndicator] || { label: selectedIndicator, fmt: v=>v };
 
   if (geojsonLayer) geojsonLayer.remove();
   geojsonLayer = L.geoJSON(SA2_GEOJSON, {
     style: feature => {
-      const code = feature.properties.SA2_CODE21;
-      const row = sa2Map[code];
-      const val = row ? row[selectedIndicator] : null;
-      return {
-        fillColor: getColor(val, min, max),
-        weight: 1.5,
-        color: '#fff',
-        fillOpacity: 0.8
-      };
+      const row = sa2Map[feature.properties.SA2_CODE21];
+      const v = row ? row[selectedIndicator] : null;
+      return { fillColor: getColor(v,min,max), weight:1.5, color:'#fff', fillOpacity:0.8 };
     },
     onEachFeature: (feature, layer) => {
       const code = feature.properties.SA2_CODE21;
       const name = feature.properties.SA2_NAME21;
       const row = sa2Map[code];
-      const val = row ? row[selectedIndicator] : null;
-      const display = (val != null && !isNaN(val)) ? meta.format(val) : 'N/A';
-      layer.bindTooltip(`<strong>${name}</strong><br/>${meta.label}: ${display}`, { sticky: true });
+      const v = row ? row[selectedIndicator] : null;
+      const disp = (v!=null&&!isNaN(v)) ? meta.fmt(v) : 'N/A';
+      layer.bindTooltip(`<strong>${name}</strong><br/>${meta.label}: ${disp}`, {sticky:true});
       layer.on('click', () => selectSA2(code));
     }
   }).addTo(map);
 
-  // Update legend
+  // Legend
   const steps = 5;
   let html = `<div class="legend-title">${meta.label}</div>`;
-  for (let i = 0; i < steps; i++) {
-    const v = min + (max - min) * i / (steps - 1);
-    html += `<div><i style="background:${CHOROPLETH_COLORS[i]}"></i>${meta.format(v)}</div>`;
+  for (let i=0; i<steps; i++) {
+    const v = min + (max-min)*i/(steps-1);
+    html += `<div><i style="background:${getColor(v,min,max)}"></i>${meta.fmt(v)}</div>`;
   }
   const el = document.getElementById('map-legend');
   if (el) el.innerHTML = html;
 }
 
-// ── SA2 DETAIL ──────────────────────────────────────────
+// ── BAR CHART ─────────────────────────────────────────────────────────
+function updateBarChart() {
+  const meta = INDICATOR_LABELS[selectedIndicator] || { label: selectedIndicator, fmt: v=>v };
+  document.getElementById('bar-title').textContent = meta.label + ' — all SA2s, ranked';
+
+  // Sort descending
+  const sorted = [...SA2_DATA]
+    .filter(r => r[selectedIndicator] != null && !isNaN(r[selectedIndicator]))
+    .sort((a,b) => b[selectedIndicator] - a[selectedIndicator]);
+
+  const labels = sorted.map(r => r['SA2 Name']);
+  const values = sorted.map(r => r[selectedIndicator]);
+  const min = Math.min(...values), max = Math.max(...values);
+
+  const bgColors = values.map(v => {
+    const c = getColor(v, min, max);
+    return c.startsWith('rgb') ? c.replace('rgb','rgba').replace(')',',0.8)') : c+'cc';
+  });
+
+  // Highlight selected SA2
+  const borderColors = sorted.map(r =>
+    String(r['SA2 Code']) === selectedSA2Code ? '#ff6600' : 'transparent'
+  );
+  const borderWidths = sorted.map(r =>
+    String(r['SA2 Code']) === selectedSA2Code ? 2 : 0
+  );
+
+  const height = Math.max(400, sorted.length * 22);
+  document.getElementById('barChart').style.height = height + 'px';
+
+  if (barChart) barChart.destroy();
+  barChart = new Chart(document.getElementById('barChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: bgColors,
+        borderColor: borderColors,
+        borderWidth: borderWidths,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => meta.fmt(ctx.raw)
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { font: { size: 9 } }, grid: { color: '#eee' } },
+        y: { ticks: { font: { size: 9 } } }
+      },
+      onClick: (e, elements) => {
+        if (elements.length) {
+          const idx = elements[0].index;
+          selectSA2(String(sorted[idx]['SA2 Code']));
+        }
+      }
+    }
+  });
+}
+
+// ── SA2 DETAIL ────────────────────────────────────────────────────────
 function selectSA2(code) {
   selectedSA2Code = code;
   sa2Sel.value = code;
   const row = sa2Map[code];
   if (!row) return;
 
-  // KPI cards
-  const panel = document.getElementById('kpi-panel');
-  panel.innerHTML = `
+  document.getElementById('kpi-panel').innerHTML = `
     <div class="kpi-sa2-name">${row['SA2 Name']}</div>
     <div class="kpi-sa3-name">${row['Region (SA3)']} · SA2 ${code}</div>
     <div class="kpi-grid">${
-      Object.entries(INDICATOR_LABELS).map(([key, meta]) => {
+      Object.entries(INDICATOR_LABELS).map(([key,meta]) => {
         const v = row[key];
-        const display = (v != null && !isNaN(v)) ? meta.format(v) : '—';
-        return `<div class="kpi-card">
-          <div class="label">${meta.label}</div>
-          <div class="value">${display}</div>
-        </div>`;
+        const disp = (v!=null&&!isNaN(v)) ? meta.fmt(v) : '—';
+        return `<div class="kpi-card"><div class="label">${meta.label}</div><div class="value">${disp}</div></div>`;
       }).join('')
     }</div>`;
 
@@ -410,57 +369,62 @@ function selectSA2(code) {
   if (geojsonLayer) {
     geojsonLayer.eachLayer(layer => {
       const lcode = layer.feature.properties.SA2_CODE21;
-      layer.setStyle({
-        weight: lcode === code ? 3 : 1.5,
-        color: lcode === code ? '#ff6600' : '#fff',
-      });
+      layer.setStyle({ weight: lcode===code ? 3 : 1.5, color: lcode===code ? '#ff6600' : '#fff' });
     });
   }
+
+  // Re-render bar to show highlight
+  updateBarChart();
 }
 
-// ── RADAR CHART ─────────────────────────────────────────
-function percentileRank(arr, val) {
-  const sorted = arr.filter(v => v != null && !isNaN(v)).sort((a,b)=>a-b);
-  const pos = sorted.filter(v => v <= val).length;
-  return Math.round((pos / sorted.length) * 100);
+// ── RADAR CHART ────────────────────────────────────────────────────────
+function pctRank(arr, val) {
+  const s = arr.filter(v=>v!=null&&!isNaN(v)).sort((a,b)=>a-b);
+  return Math.round(s.filter(v=>v<=val).length / s.length * 100);
 }
 
 function updateRadar(row) {
-  const wrap = document.getElementById('radar-wrap');
-  wrap.style.display = 'block';
-
-  const labels = RADAR_INDICATORS.map(k => (INDICATOR_LABELS[k]||{}).label || k);
-  const data = RADAR_INDICATORS.map(k => {
-    const allVals = SA2_DATA.map(r => r[k]);
+  document.getElementById('radar-wrap').style.display = 'block';
+  const labels = RADAR_KEYS.map(k => (INDICATOR_LABELS[k]||{}).label||k);
+  const data = RADAR_KEYS.map(k => {
     const v = row[k];
-    return (v != null && !isNaN(v)) ? percentileRank(allVals, v) : 0;
+    return (v!=null&&!isNaN(v)) ? pctRank(SA2_DATA.map(r=>r[k]), v) : 0;
   });
-
   if (radarChart) radarChart.destroy();
   radarChart = new Chart(document.getElementById('radarChart'), {
     type: 'radar',
     data: {
       labels,
-      datasets: [{
-        label: row['SA2 Name'],
-        data,
-        backgroundColor: 'rgba(0,51,102,0.15)',
-        borderColor: '#003366',
-        pointBackgroundColor: '#003366',
-      }]
+      datasets: [{ label: row['SA2 Name'], data, backgroundColor:'rgba(0,51,102,0.15)', borderColor:'#003366', pointBackgroundColor:'#003366' }]
     },
     options: {
-      scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, font: { size: 9 } }, pointLabels: { font: { size: 9 } } } },
-      plugins: { legend: { display: false } },
+      scales: { r: { min:0, max:100, ticks:{ stepSize:25, font:{size:8} }, pointLabels:{ font:{size:8} } } },
+      plugins: { legend:{ display:false } },
     }
   });
 }
 
-// ── AI Q&A ──────────────────────────────────────────────
+// ── AI Q&A ────────────────────────────────────────────────────────────
+// Load saved key from localStorage
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('cc_openai_key');
+  if (saved) {
+    document.getElementById('qa-api-key').value = saved;
+    document.getElementById('qa-key-hint').textContent = '✅ Key loaded from browser storage.';
+  }
+});
+
+function saveKey() {
+  const k = document.getElementById('qa-api-key').value.trim();
+  if (!k) return;
+  localStorage.setItem('cc_openai_key', k);
+  document.getElementById('qa-key-hint').textContent = '✅ Key saved — you won\'t need to enter it again.';
+}
+
 let qaOpen = false;
 function toggleQA() {
   qaOpen = !qaOpen;
-  document.getElementById('qa-body').className = 'qa-body' + (qaOpen ? ' open' : '');
+  document.getElementById('qa-body').className = 'qa-body'+(qaOpen?' open':'');
   document.getElementById('qa-toggle-icon').textContent = qaOpen ? '▼' : '▲';
 }
 
@@ -469,67 +433,54 @@ async function sendQA() {
   const apiKey = document.getElementById('qa-api-key').value.trim();
   const q = input.value.trim();
   if (!q) return;
-  if (!apiKey) { addQAMsg('system', '⚠️ Please enter your OpenAI API key above.'); return; }
+  if (!apiKey) { addQAMsg('ai','⚠️ Please enter your OpenAI API key.'); return; }
 
-  addQAMsg('user', q);
-  input.value = '';
-  addQAMsg('ai', '⏳ Thinking...');
+  addQAMsg('user', q); input.value = '';
+  const thinkingEl = addQAMsg('ai','⏳ Thinking...');
 
-  const systemPrompt = `You are a data analyst assistant for Central Coast Council, NSW, Australia.
-You have access to the following SA2-level data for 31 SA2 regions in the Central Coast LGA.
-Data columns: ${Object.values(INDICATOR_LABELS).map(m=>m.label).join(', ')}.
-Data (JSON): ${JSON.stringify(SA2_DATA.map(r => {
-    const out = { sa2: r['SA2 Name'], region: r['Region (SA3)'] };
-    Object.keys(INDICATOR_LABELS).forEach(k => { if(r[k]!=null) out[INDICATOR_LABELS[k].label] = r[k]; });
+  const systemPrompt = `You are a data analyst for Central Coast Council, NSW. Answer questions concisely using the SA2-level data provided. Format numbers clearly. Data: ${JSON.stringify(SA2_DATA.map(r => {
+    const out={sa2:r['SA2 Name'],region:r['Region (SA3)']};
+    Object.keys(INDICATOR_LABELS).forEach(k=>{if(r[k]!=null) out[INDICATOR_LABELS[k].label]=r[k];});
     return out;
-  }))}.
-Answer questions concisely using the data. If comparing, list top/bottom values. Format numbers clearly.`;
+  }))}`;
 
   try {
     const resp = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: q }],
-        max_tokens: 400,
-        temperature: 0.3
-      })
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
+      body: JSON.stringify({ model:'gpt-4o-mini', messages:[{role:'system',content:systemPrompt},{role:'user',content:q}], max_tokens:400, temperature:0.3 })
     });
     const json = await resp.json();
-    const answer = json.choices?.[0]?.message?.content || 'No response received.';
-    // Replace the "Thinking..." message
-    const msgs = document.getElementById('qa-messages');
-    msgs.lastElementChild.remove();
-    addQAMsg('ai', answer);
+    thinkingEl.textContent = 'AI: ' + (json.choices?.[0]?.message?.content || 'No response.');
   } catch(e) {
-    const msgs = document.getElementById('qa-messages');
-    msgs.lastElementChild.remove();
-    addQAMsg('ai', '❌ Error: ' + e.message);
+    thinkingEl.textContent = 'AI: ❌ ' + e.message;
   }
 }
 
 function addQAMsg(role, text) {
   const msgs = document.getElementById('qa-messages');
-  // Clear placeholder
-  if (msgs.querySelector('.placeholder')) msgs.innerHTML = '';
+  if (msgs.querySelector('.placeholder')) msgs.innerHTML='';
   const div = document.createElement('div');
-  div.className = role === 'user' ? 'qa-msg-user' : 'qa-msg-ai';
-  div.textContent = (role === 'user' ? 'You: ' : 'AI: ') + text;
+  div.className = role==='user' ? 'qa-msg-user' : 'qa-msg-ai';
+  div.textContent = (role==='user'?'You: ':'AI: ') + text;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
+  return div;
 }
 
-// ── LOAD GEOJSON & INIT ─────────────────────────────────
+// ── INIT ────────────────────────────────────────────────────────────────
 let SA2_GEOJSON;
+const barWrap = document.getElementById('barChartWrap');
+barWrap.style.overflowY = 'auto';
+
 fetch('central_coast_sa2.geojson')
-  .then(r => r.json())
+  .then(r=>r.json())
   .then(data => {
     SA2_GEOJSON = data;
     updateChoropleth();
+    updateBarChart();
     map.fitBounds(geojsonLayer.getBounds());
   });
 </script>
-
 </body>
 </html>
