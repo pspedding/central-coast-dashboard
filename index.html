@@ -91,9 +91,8 @@
     #qa-send { background: #003366; color: white; border: none; border-radius: 5px; padding: 7px 12px; font-size: 0.82rem; cursor: pointer; }
     #qa-send:hover { background: #004a99; }
     .qa-key-row { margin-top: 7px; display: flex; gap: 6px; align-items: center; }
-    #qa-api-key { flex: 1; padding: 5px 8px; font-size: 0.75rem; border: 1px solid #ccd; border-radius: 5px; font-family: monospace; }
-    .qa-key-save { background: #eee; border: 1px solid #ccd; border-radius: 5px; padding: 5px 9px; font-size: 0.75rem; cursor: pointer; white-space: nowrap; }
-    .qa-key-save:hover { background: #ddd; }
+    #qa-api-key { display: none; }
+    .qa-key-save { display: none; }
     .qa-hint { font-size: 0.68rem; color: #aaa; margin-top: 3px; }
   </style>
 </head>
@@ -159,7 +158,7 @@
       <input type="password" id="qa-api-key" placeholder="OpenAI API key (sk-…)" />
       <button class="qa-key-save" onclick="saveKey()">Save key</button>
     </div>
-    <p class="qa-hint" id="qa-key-hint">Key saved in browser only — never sent to our servers.</p>
+    <p class="qa-hint" id="qa-key-hint"></p>
   </div>
 </div>
 
@@ -430,28 +429,26 @@ function toggleQA() {
 
 async function sendQA() {
   const input = document.getElementById('qa-input');
-  const apiKey = document.getElementById('qa-api-key').value.trim();
   const q = input.value.trim();
   if (!q) return;
-  if (!apiKey) { addQAMsg('ai','⚠️ Please enter your OpenAI API key.'); return; }
 
   addQAMsg('user', q); input.value = '';
   const thinkingEl = addQAMsg('ai','⏳ Thinking...');
 
-  const systemPrompt = `You are a data analyst for Central Coast Council, NSW. Answer questions concisely using the SA2-level data provided. Format numbers clearly. Data: ${JSON.stringify(SA2_DATA.map(r => {
+  const data = SA2_DATA.map(r => {
     const out={sa2:r['SA2 Name'],region:r['Region (SA3)']};
     Object.keys(INDICATOR_LABELS).forEach(k=>{if(r[k]!=null) out[INDICATOR_LABELS[k].label]=r[k];});
     return out;
-  }))}`;
+  });
 
   try {
-    const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+    const resp = await fetch('http://20.5.163.117:3456/ask', {
       method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
-      body: JSON.stringify({ model:'gpt-4o-mini', messages:[{role:'system',content:systemPrompt},{role:'user',content:q}], max_tokens:400, temperature:0.3 })
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ question: q, data })
     });
     const json = await resp.json();
-    thinkingEl.textContent = 'AI: ' + (json.choices?.[0]?.message?.content || 'No response.');
+    thinkingEl.textContent = 'AI: ' + (json.answer || 'No response.');
   } catch(e) {
     thinkingEl.textContent = 'AI: ❌ ' + e.message;
   }
