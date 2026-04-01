@@ -442,7 +442,7 @@ async function sendQA() {
   });
 
   try {
-    const resp = await fetch('http://20.5.163.117:3456/ask', {
+    const resp = await fetch('https://soa-understood-result-jobs.trycloudflare.com/ask', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ question: q, data })
