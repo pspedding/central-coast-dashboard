@@ -45,6 +45,36 @@
     #radarChart { max-height: 200px; }
     .placeholder { color: #aaa; font-style: italic; font-size: 0.82rem; padding: 16px 0; }
 
+    /* Info modal */
+    .info-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45); z-index: 2000; align-items: center; justify-content: center;
+    }
+    .info-overlay.open { display: flex; }
+    .info-modal {
+      background: white; border-radius: 10px; width: 680px; max-width: 95vw;
+      max-height: 85vh; display: flex; flex-direction: column;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    }
+    .info-modal-header {
+      background: #003366; color: white; padding: 14px 18px;
+      border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; align-items: center;
+    }
+    .info-modal-header h2 { font-size: 1rem; font-weight: 600; }
+    .info-close { background: none; border: none; color: white; font-size: 1.3rem; cursor: pointer; line-height: 1; }
+    .info-search { padding: 10px 16px; border-bottom: 1px solid #eee; }
+    .info-search input { width: 100%; padding: 7px 10px; border: 1px solid #ccd; border-radius: 5px; font-size: 0.85rem; }
+    .info-table-wrap { overflow-y: auto; flex: 1; }
+    table.info-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    table.info-table th { background: #f0f4f8; padding: 8px 12px; text-align: left; font-weight: 600; color: #444; border-bottom: 2px solid #dde; position: sticky; top: 0; }
+    table.info-table td { padding: 7px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    table.info-table tr:hover td { background: #f7f9fc; }
+    .badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+    .badge-monthly { background: #dbeafe; color: #1d4ed8; }
+    .badge-quarterly { background: #dcfce7; color: #166534; }
+    .badge-annual { background: #fef9c3; color: #854d0e; }
+    .badge-4yearly { background: #fce7f3; color: #9d174d; }
+
     /* ── Map ── */
     #map { position: relative; }
 
@@ -103,6 +133,7 @@
     <h1>Central Coast Council — SA2 Economic Dashboard</h1>
     <span>Prototype v0.1 · For internal use only</span>
   </div>
+  <button id="info-btn" onclick="toggleInfo()" title="Indicator metadata" style="margin-left:auto;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:white;border-radius:50%;width:32px;height:32px;font-size:1rem;cursor:pointer;flex-shrink:0;">ℹ</button>
 </header>
 
 <div class="layout">
@@ -142,6 +173,25 @@
 
 </div>
 
+<!-- ── Info Modal ── -->
+<div class="info-overlay" id="info-overlay" onclick="if(event.target===this)toggleInfo()">
+  <div class="info-modal">
+    <div class="info-modal-header">
+      <h2>Indicator Definitions &amp; Metadata</h2>
+      <button class="info-close" onclick="toggleInfo()">✕</button>
+    </div>
+    <div class="info-search">
+      <input type="text" id="info-search" placeholder="Search indicators…" oninput="filterInfoTable(this.value)" />
+    </div>
+    <div class="info-table-wrap">
+      <table class="info-table" id="info-table">
+        <thead><tr><th>Indicator</th><th>Content Area</th><th>Dataset</th><th>Frequency</th></tr></thead>
+        <tbody id="info-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <!-- ── AI Q&A ── -->
 <div class="qa-panel">
   <div class="qa-header" onclick="toggleQA()">
@@ -162,6 +212,7 @@
   </div>
 </div>
 
+<script src="indicator-lookup.js"></script>
 <script src="data.js"></script>
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────────
@@ -465,6 +516,32 @@ function addQAMsg(role, text) {
   msgs.scrollTop = msgs.scrollHeight;
   return div;
 }
+
+// ── INFO MODAL ──────────────────────────────────────────────────────────
+function buildInfoTable() {
+  const tbody = document.getElementById('info-tbody');
+  const freqClass = { Monthly:'monthly', Quarterly:'quarterly', Annual:'annual', '4 Yearly':'4yearly' };
+  Object.entries(INDICATOR_LOOKUP).forEach(([name, meta]) => {
+    const cls = freqClass[meta.frequency] || '';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${name}</td><td>${meta.contentArea}</td><td>${meta.dataset}</td>
+      <td><span class="badge badge-${cls}">${meta.frequency}</span></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function filterInfoTable(q) {
+  const rows = document.querySelectorAll('#info-tbody tr');
+  const lq = q.toLowerCase();
+  rows.forEach(r => { r.style.display = r.textContent.toLowerCase().includes(lq) ? '' : 'none'; });
+}
+
+function toggleInfo() {
+  const el = document.getElementById('info-overlay');
+  el.classList.toggle('open');
+}
+
+buildInfoTable();
 
 // ── INIT ────────────────────────────────────────────────────────────────
 let SA2_GEOJSON;
