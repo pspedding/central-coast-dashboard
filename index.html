@@ -442,7 +442,8 @@ async function sendQA() {
   });
 
   try {
-    const resp = await fetch('https://kathy-crm-drives-guards.trycloudflare.com/ask', {
+    const cfg = await fetch('config.json?t='+Date.now()).then(r=>r.json());
+    const resp = await fetch(cfg.apiUrl, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ question: q, data })
