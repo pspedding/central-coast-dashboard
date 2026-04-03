@@ -185,7 +185,7 @@
     </div>
     <div class="info-table-wrap">
       <table class="info-table" id="info-table">
-        <thead><tr><th>Indicator</th><th>Content Area</th><th>Dataset</th><th>Frequency</th></tr></thead>
+        <thead><tr><th>Indicator</th><th>Content Area</th><th>Dataset</th><th>Frequency</th><th>Latest Period</th></tr></thead>
         <tbody id="info-tbody"></tbody>
       </table>
     </div>
@@ -565,7 +565,8 @@ function buildInfoTable() {
     const cls = freqClass[meta.frequency] || '';
     const tr = document.createElement('tr');
     tr.innerHTML = `<td>${name}</td><td>${meta.contentArea}</td><td>${meta.dataset}</td>
-      <td><span class="badge badge-${cls}">${meta.frequency}</span></td>`;
+      <td><span class="badge badge-${cls}">${meta.frequency}</span></td>
+      <td style="font-size:0.75rem;color:#555">${meta.latestPeriod||'—'}</td>`;
     tbody.appendChild(tr);
   });
 }
