@@ -1,0 +1,1507 @@
+{
+  "meta": {
+    "source": "sa2_kpi_wide.csv",
+    "method": "pearson",
+    "min_abs_correlation": 0.3,
+    "top_n": 5,
+    "metric_count": 38,
+    "row_count": 31
+  },
+  "indicators": {
+    "% Change": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "ERP Change 2023-24",
+          "value": 0.845124
+        },
+        {
+          "indicator": "Net internal migration",
+          "value": 0.646874
+        },
+        {
+          "indicator": "Number of dwellings approved",
+          "value": 0.586796
+        },
+        {
+          "indicator": "Value of building job(s)",
+          "value": 0.546699
+        },
+        {
+          "indicator": "Natural increase",
+          "value": 0.479609
+        }
+      ],
+      "negative": []
+    },
+    "Age Pension": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Pension Concession Card",
+          "value": 0.968525
+        },
+        {
+          "indicator": "Low Income Card",
+          "value": 0.898275
+        },
+        {
+          "indicator": "Commonwealth Rent Assistance",
+          "value": 0.895657
+        },
+        {
+          "indicator": "ERP at 30 June 2023",
+          "value": 0.887994
+        },
+        {
+          "indicator": "ERP at 30 June 2024",
+          "value": 0.881719
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.595298
+        },
+        {
+          "indicator": "Natural increase",
+          "value": -0.545414
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.493698
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.459386
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.369143
+        }
+      ]
+    },
+    "Carer Allowance": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Carer Payment",
+          "value": 0.980751
+        },
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.97376
+        },
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.971782
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.96407
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": 0.961628
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.664847
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.640521
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.637232
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.590526
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.337638
+        }
+      ]
+    },
+    "Carer Payment": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Carer Allowance",
+          "value": 0.980751
+        },
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.970355
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": 0.968686
+        },
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.960722
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.960716
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.761086
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.729054
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.721932
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.668949
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.464455
+        }
+      ]
+    },
+    "Commonwealth Rent Assistance": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Pension Concession Card",
+          "value": 0.951038
+        },
+        {
+          "indicator": "JobSeeker Payment",
+          "value": 0.929587
+        },
+        {
+          "indicator": "Disability Support Pension",
+          "value": 0.917492
+        },
+        {
+          "indicator": "Unemployment",
+          "value": 0.911665
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": 0.910694
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.742281
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.696968
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.634862
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.531939
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.338428
+        }
+      ]
+    },
+    "Commonwealth Seniors Health Card": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Age Pension",
+          "value": 0.745079
+        },
+        {
+          "indicator": "ERP at 30 June 2023",
+          "value": 0.711341
+        },
+        {
+          "indicator": "ERP at 30 June 2024",
+          "value": 0.70723
+        },
+        {
+          "indicator": "Net overseas migration",
+          "value": 0.701913
+        },
+        {
+          "indicator": "Total Businesses",
+          "value": 0.679311
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Natural increase",
+          "value": -0.435408
+        }
+      ]
+    },
+    "Disability Support Pension": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Unemployment",
+          "value": 0.97819
+        },
+        {
+          "indicator": "JobSeeker Payment",
+          "value": 0.974488
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.963474
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": 0.953546
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": 0.9484
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.790379
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.742691
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.666761
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.540582
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.436394
+        }
+      ]
+    },
+    "ERP Change 2023-24": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "% Change",
+          "value": 0.845124
+        },
+        {
+          "indicator": "Net internal migration",
+          "value": 0.76674
+        },
+        {
+          "indicator": "Number of dwellings approved",
+          "value": 0.760482
+        },
+        {
+          "indicator": "Value of building job(s)",
+          "value": 0.692429
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.65967
+        }
+      ],
+      "negative": []
+    },
+    "ERP at 30 June 2023": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "ERP at 30 June 2024",
+          "value": 0.999809
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.982746
+        },
+        {
+          "indicator": "Pension Concession Card",
+          "value": 0.910054
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.907358
+        },
+        {
+          "indicator": "Low Income Card",
+          "value": 0.888788
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.460079
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.371301
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.311152
+        }
+      ]
+    },
+    "ERP at 30 June 2024": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "ERP at 30 June 2023",
+          "value": 0.999809
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.985264
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.907006
+        },
+        {
+          "indicator": "Pension Concession Card",
+          "value": 0.905545
+        },
+        {
+          "indicator": "Low Income Card",
+          "value": 0.884501
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.456441
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.367943
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.306837
+        }
+      ]
+    },
+    "Family Tax Benefit A": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.998385
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": 0.988518
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.982066
+        },
+        {
+          "indicator": "Carer Allowance",
+          "value": 0.971782
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": 0.960722
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.661507
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.626459
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.622177
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.562856
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.374173
+        }
+      ]
+    },
+    "Family Tax Benefit B": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.998385
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": 0.992855
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.984901
+        },
+        {
+          "indicator": "Carer Allowance",
+          "value": 0.97376
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": 0.970355
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.683219
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.650399
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.642146
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.579449
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.404752
+        }
+      ]
+    },
+    "Health Care Card": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.984901
+        },
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.982066
+        },
+        {
+          "indicator": "Unemployment",
+          "value": 0.978279
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": 0.971402
+        },
+        {
+          "indicator": "Carer Allowance",
+          "value": 0.96407
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.693613
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.680138
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.620281
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.528119
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.375792
+        }
+      ]
+    },
+    "House Price (Current)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Unit Price (Current)",
+          "value": 0.841563
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": 0.836656
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": 0.700003
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": 0.671673
+        },
+        {
+          "indicator": "Unit Rent (P/W)",
+          "value": 0.649425
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.550748
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": -0.377769
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": -0.359208
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": -0.346268
+        },
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": -0.333113
+        }
+      ]
+    },
+    "House Rent (P/W)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "House Price (Current)",
+          "value": 0.836656
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": 0.812414
+        },
+        {
+          "indicator": "Unit Rent (P/W)",
+          "value": 0.780986
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": 0.7805
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": 0.765877
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.731414
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": -0.492681
+        },
+        {
+          "indicator": "Unemployment",
+          "value": -0.476767
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": -0.464455
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": -0.459293
+        }
+      ]
+    },
+    "Index of Economic Resources": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": 0.919688
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": 0.869629
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": 0.728294
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": 0.716969
+        },
+        {
+          "indicator": "Unit Rent (P/W)",
+          "value": 0.578752
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.842979
+        },
+        {
+          "indicator": "Disability Support Pension",
+          "value": -0.790379
+        },
+        {
+          "indicator": "JobSeeker Payment",
+          "value": -0.789921
+        },
+        {
+          "indicator": "Unemployment",
+          "value": -0.779785
+        },
+        {
+          "indicator": "Commonwealth Rent Assistance",
+          "value": -0.742281
+        }
+      ]
+    },
+    "Index of Education and Occupation": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": 0.963556
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": 0.901019
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": 0.7805
+        },
+        {
+          "indicator": "Unit Rent (P/W)",
+          "value": 0.764032
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": 0.716969
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.795114
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": -0.668949
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": -0.621597
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": -0.604837
+        },
+        {
+          "indicator": "Carer Allowance",
+          "value": -0.590526
+        }
+      ]
+    },
+    "Index of Relative Socio-economic Advantage and Disadvantage": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": 0.976355
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": 0.963556
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": 0.869629
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": 0.812414
+        },
+        {
+          "indicator": "Unit Rent (P/W)",
+          "value": 0.761464
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.883786
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": -0.729054
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": -0.695715
+        },
+        {
+          "indicator": "Unemployment",
+          "value": -0.688163
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": -0.677372
+        }
+      ]
+    },
+    "Index of Relative Socio-economic Disadvantage ": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": 0.976355
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": 0.919688
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": 0.901019
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": 0.765877
+        },
+        {
+          "indicator": "Unit Rent (P/W)",
+          "value": 0.705017
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.943411
+        },
+        {
+          "indicator": "Unemployment",
+          "value": -0.761782
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": -0.761086
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": -0.758658
+        },
+        {
+          "indicator": "Disability Support Pension",
+          "value": -0.742691
+        }
+      ]
+    },
+    "JobSeeker Payment": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Unemployment",
+          "value": 0.984151
+        },
+        {
+          "indicator": "Disability Support Pension",
+          "value": 0.974488
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.960617
+        },
+        {
+          "indicator": "Pension Concession Card",
+          "value": 0.931681
+        },
+        {
+          "indicator": "Commonwealth Rent Assistance",
+          "value": 0.929587
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.789921
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.721796
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.646557
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.515174
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.443222
+        }
+      ]
+    },
+    "Labour Force": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "ERP at 30 June 2024",
+          "value": 0.985264
+        },
+        {
+          "indicator": "ERP at 30 June 2023",
+          "value": 0.982746
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.86733
+        },
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.846808
+        },
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.833212
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.374113
+        }
+      ]
+    },
+    "Listing Visits per Property": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Population density 2024 (persons/km2)",
+          "value": 0.372806
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Total Spend",
+          "value": -0.316341
+        }
+      ]
+    },
+    "Low Income Card": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Pension Concession Card",
+          "value": 0.948746
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.933475
+        },
+        {
+          "indicator": "Carer Allowance",
+          "value": 0.925739
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": 0.914769
+        },
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.911249
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.700184
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.663431
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.627967
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.552216
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.356004
+        }
+      ]
+    },
+    "Natural increase": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "% Change",
+          "value": 0.479609
+        },
+        {
+          "indicator": "ERP Change 2023-24",
+          "value": 0.384938
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Age Pension",
+          "value": -0.545414
+        },
+        {
+          "indicator": "Unit Price (Current)",
+          "value": -0.509004
+        },
+        {
+          "indicator": "Commonwealth Seniors Health Card",
+          "value": -0.435408
+        },
+        {
+          "indicator": "Pension Concession Card",
+          "value": -0.422572
+        },
+        {
+          "indicator": "Total Spend",
+          "value": -0.389919
+        }
+      ]
+    },
+    "Net internal migration": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Number of dwellings approved",
+          "value": 0.88512
+        },
+        {
+          "indicator": "Value of building job(s)",
+          "value": 0.831086
+        },
+        {
+          "indicator": "ERP Change 2023-24",
+          "value": 0.76674
+        },
+        {
+          "indicator": "% Change",
+          "value": 0.646874
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.488614
+        }
+      ],
+      "negative": []
+    },
+    "Net overseas migration": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Total Businesses",
+          "value": 0.864347
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.800168
+        },
+        {
+          "indicator": "ERP at 30 June 2024",
+          "value": 0.752457
+        },
+        {
+          "indicator": "ERP at 30 June 2023",
+          "value": 0.747527
+        },
+        {
+          "indicator": "Commonwealth Seniors Health Card",
+          "value": 0.701913
+        }
+      ],
+      "negative": []
+    },
+    "Number of dwellings approved": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Net internal migration",
+          "value": 0.88512
+        },
+        {
+          "indicator": "Value of building job(s)",
+          "value": 0.855618
+        },
+        {
+          "indicator": "ERP Change 2023-24",
+          "value": 0.760482
+        },
+        {
+          "indicator": "% Change",
+          "value": 0.586796
+        },
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.537642
+        }
+      ],
+      "negative": []
+    },
+    "Parenting Payment Single": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.992855
+        },
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.988518
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.971402
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": 0.968686
+        },
+        {
+          "indicator": "Carer Allowance",
+          "value": 0.961628
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.714361
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.677372
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.665246
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.621597
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.459293
+        }
+      ]
+    },
+    "Pension Concession Card": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Age Pension",
+          "value": 0.968525
+        },
+        {
+          "indicator": "Commonwealth Rent Assistance",
+          "value": 0.951038
+        },
+        {
+          "indicator": "Low Income Card",
+          "value": 0.948746
+        },
+        {
+          "indicator": "Carer Allowance",
+          "value": 0.944137
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.935136
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.699245
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.628867
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.580431
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.479272
+        },
+        {
+          "indicator": "Natural increase",
+          "value": -0.422572
+        }
+      ]
+    },
+    "Population density 2024 (persons/km2)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "ERP at 30 June 2023",
+          "value": 0.55464
+        },
+        {
+          "indicator": "ERP at 30 June 2024",
+          "value": 0.551396
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.542378
+        },
+        {
+          "indicator": "Disability Support Pension",
+          "value": 0.53552
+        },
+        {
+          "indicator": "Low Income Card",
+          "value": 0.533292
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.332553
+        }
+      ]
+    },
+    "Total Businesses": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Net overseas migration",
+          "value": 0.864347
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.711748
+        },
+        {
+          "indicator": "Total Spend",
+          "value": 0.687481
+        },
+        {
+          "indicator": "Commonwealth Seniors Health Card",
+          "value": 0.679311
+        },
+        {
+          "indicator": "ERP at 30 June 2024",
+          "value": 0.661307
+        }
+      ],
+      "negative": []
+    },
+    "Total Spend": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Total Businesses",
+          "value": 0.687481
+        },
+        {
+          "indicator": "Net overseas migration",
+          "value": 0.525275
+        },
+        {
+          "indicator": "Age Pension",
+          "value": 0.486501
+        },
+        {
+          "indicator": "Unit Price (Current)",
+          "value": 0.473019
+        },
+        {
+          "indicator": "Pension Concession Card",
+          "value": 0.467706
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Natural increase",
+          "value": -0.389919
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.323138
+        },
+        {
+          "indicator": "Listing Visits per Property",
+          "value": -0.316341
+        }
+      ]
+    },
+    "Unemployment": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "JobSeeker Payment",
+          "value": 0.984151
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.978279
+        },
+        {
+          "indicator": "Disability Support Pension",
+          "value": 0.97819
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": 0.971676
+        },
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.95468
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.779785
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.761782
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.688163
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.572608
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.476767
+        }
+      ]
+    },
+    "Unemployment Rate (%)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Unemployment",
+          "value": 0.730171
+        },
+        {
+          "indicator": "Youth Allowance (other)",
+          "value": 0.729195
+        },
+        {
+          "indicator": "Disability Support Pension",
+          "value": 0.684432
+        },
+        {
+          "indicator": "Carer Payment",
+          "value": 0.684039
+        },
+        {
+          "indicator": "JobSeeker Payment",
+          "value": 0.678893
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.943411
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.883786
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.842979
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.795114
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.731414
+        }
+      ]
+    },
+    "Unit Price (Current)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "House Price (Current)",
+          "value": 0.841563
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": 0.717905
+        },
+        {
+          "indicator": "Commonwealth Seniors Health Card",
+          "value": 0.520218
+        },
+        {
+          "indicator": "Unit Rent (P/W)",
+          "value": 0.490588
+        },
+        {
+          "indicator": "Total Spend",
+          "value": 0.473019
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Natural increase",
+          "value": -0.509004
+        },
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.412583
+        }
+      ]
+    },
+    "Unit Rent (P/W)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "House Rent (P/W)",
+          "value": 0.780986
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": 0.764032
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": 0.761464
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": 0.705017
+        },
+        {
+          "indicator": "House Price (Current)",
+          "value": 0.649425
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Unemployment Rate (%)",
+          "value": -0.676797
+        }
+      ]
+    },
+    "Value of building job(s)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Number of dwellings approved",
+          "value": 0.855618
+        },
+        {
+          "indicator": "Net internal migration",
+          "value": 0.831086
+        },
+        {
+          "indicator": "ERP Change 2023-24",
+          "value": 0.692429
+        },
+        {
+          "indicator": "% Change",
+          "value": 0.546699
+        },
+        {
+          "indicator": "Labour Force",
+          "value": 0.505076
+        }
+      ],
+      "negative": []
+    },
+    "Youth Allowance (other)": {
+      "method": "pearson",
+      "positive": [
+        {
+          "indicator": "Unemployment",
+          "value": 0.971676
+        },
+        {
+          "indicator": "Family Tax Benefit B",
+          "value": 0.963883
+        },
+        {
+          "indicator": "Health Care Card",
+          "value": 0.963484
+        },
+        {
+          "indicator": "Parenting Payment Single",
+          "value": 0.957849
+        },
+        {
+          "indicator": "Family Tax Benefit A",
+          "value": 0.957364
+        }
+      ],
+      "negative": [
+        {
+          "indicator": "Index of Relative Socio-economic Disadvantage ",
+          "value": -0.758658
+        },
+        {
+          "indicator": "Index of Economic Resources",
+          "value": -0.730633
+        },
+        {
+          "indicator": "Index of Relative Socio-economic Advantage and Disadvantage",
+          "value": -0.695715
+        },
+        {
+          "indicator": "Index of Education and Occupation",
+          "value": -0.604837
+        },
+        {
+          "indicator": "House Rent (P/W)",
+          "value": -0.492681
+        }
+      ]
+    }
+  }
+}

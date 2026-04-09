@@ -1,0 +1,1269 @@
+{
+  "meta": {
+    "source": "sa2_kpi_wide.csv",
+    "method": "mahalanobis_or_iqr",
+    "mahal_threshold": 5.991,
+    "iqr_z_threshold": 2.0,
+    "top_n": 5
+  },
+  "pairs": {
+    "Total Spend||Unit Price (Current)": {
+      "x": "Total Spend",
+      "y": "Unit Price (Current)",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 19.2039,
+          "x_val": 62781000.0,
+          "y_val": 2311300.0,
+          "reason": "Unusual combination of Total Spend and Unit Price (Current) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011032,
+          "sa2_name": "Gosford - Springfield",
+          "score": 6.2055,
+          "x_val": 45567000.0,
+          "y_val": 725666.6667,
+          "reason": "Unusual combination of Total Spend and Unit Price (Current) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 6.0276,
+          "x_val": 43118000.0,
+          "y_val": 650000.0,
+          "reason": "Unusual combination of Total Spend and Unit Price (Current) relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||House Price (Current)": {
+      "x": "Total Spend",
+      "y": "House Price (Current)",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 14.5636,
+          "x_val": 62781000.0,
+          "y_val": 2087500.0,
+          "reason": "Unusual combination of Total Spend and House Price (Current) relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||ERP at 30 June 2024": {
+      "x": "Total Spend",
+      "y": "ERP at 30 June 2024",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 12.9457,
+          "x_val": 62781000.0,
+          "y_val": 14680.0,
+          "reason": "Unusual combination of Total Spend and ERP at 30 June 2024 relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 9.3821,
+          "x_val": 43118000.0,
+          "y_val": 5296.0,
+          "reason": "Unusual combination of Total Spend and ERP at 30 June 2024 relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||ERP at 30 June 2023": {
+      "x": "Total Spend",
+      "y": "ERP at 30 June 2023",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 12.8948,
+          "x_val": 62781000.0,
+          "y_val": 14676.0,
+          "reason": "Unusual combination of Total Spend and ERP at 30 June 2023 relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 9.3996,
+          "x_val": 43118000.0,
+          "y_val": 5282.0,
+          "reason": "Unusual combination of Total Spend and ERP at 30 June 2023 relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||Labour Force": {
+      "x": "Total Spend",
+      "y": "Labour Force",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 13.3946,
+          "x_val": 62781000.0,
+          "y_val": 6897.0,
+          "reason": "Unusual combination of Total Spend and Labour Force relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 8.8986,
+          "x_val": 43118000.0,
+          "y_val": 2936.0,
+          "reason": "Unusual combination of Total Spend and Labour Force relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011032,
+          "sa2_name": "Gosford - Springfield",
+          "score": 6.54,
+          "x_val": 45567000.0,
+          "y_val": 12894.0,
+          "reason": "Unusual combination of Total Spend and Labour Force relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||Value of building job(s)": {
+      "x": "Total Spend",
+      "y": "Value of building job(s)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.2971,
+          "x_val": 15750000.0,
+          "y_val": 9005.159,
+          "reason": "Unusual combination of Total Spend and Value of building job(s) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 10.9841,
+          "x_val": 62781000.0,
+          "y_val": 1805.727,
+          "reason": "Unusual combination of Total Spend and Value of building job(s) relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||Pension Concession Card": {
+      "x": "Total Spend",
+      "y": "Pension Concession Card",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 12.7106,
+          "x_val": 62781000.0,
+          "y_val": 3705.0,
+          "reason": "Unusual combination of Total Spend and Pension Concession Card relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 9.0943,
+          "x_val": 43118000.0,
+          "y_val": 980.0,
+          "reason": "Unusual combination of Total Spend and Pension Concession Card relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||Age Pension": {
+      "x": "Total Spend",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 11.6682,
+          "x_val": 62781000.0,
+          "y_val": 2840.0,
+          "reason": "Unusual combination of Total Spend and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 9.4877,
+          "x_val": 43118000.0,
+          "y_val": 595.0,
+          "reason": "Unusual combination of Total Spend and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 7.0524,
+          "x_val": 18444000.0,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of Total Spend and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||Commonwealth Rent Assistance": {
+      "x": "Total Spend",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 12.9874,
+          "x_val": 62781000.0,
+          "y_val": 1155.0,
+          "reason": "Unusual combination of Total Spend and Commonwealth Rent Assistance relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 7.6045,
+          "x_val": 43118000.0,
+          "y_val": 365.0,
+          "reason": "Unusual combination of Total Spend and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||Listing Visits per Property": {
+      "x": "Total Spend",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 10.4378,
+          "x_val": 62781000.0,
+          "y_val": 1033.6,
+          "reason": "Unusual combination of Total Spend and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "Total Spend||Population density 2024 (persons/km2)": {
+      "x": "Total Spend",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 12.525,
+          "x_val": 62781000.0,
+          "y_val": 434.4,
+          "reason": "Unusual combination of Total Spend and Population density 2024 (persons/km2) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021055,
+          "sa2_name": "Tuggerah - Kangy Angy",
+          "score": 6.128,
+          "x_val": 43118000.0,
+          "y_val": 190.2,
+          "reason": "Unusual combination of Total Spend and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||House Price (Current)": {
+      "x": "Unit Price (Current)",
+      "y": "House Price (Current)",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 20.5675,
+          "x_val": 2311300.0,
+          "y_val": 2087500.0,
+          "reason": "Unusual combination of Unit Price (Current) and House Price (Current) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011041,
+          "sa2_name": "Wamberal - Forresters Beach",
+          "score": 8.207,
+          "x_val": 777500.0,
+          "y_val": 1674250.0,
+          "reason": "Unusual combination of Unit Price (Current) and House Price (Current) relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||ERP at 30 June 2024": {
+      "x": "Unit Price (Current)",
+      "y": "ERP at 30 June 2024",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.0148,
+          "x_val": 2311300.0,
+          "y_val": 14680.0,
+          "reason": "Unusual combination of Unit Price (Current) and ERP at 30 June 2024 relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||ERP at 30 June 2023": {
+      "x": "Unit Price (Current)",
+      "y": "ERP at 30 June 2023",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.0147,
+          "x_val": 2311300.0,
+          "y_val": 14676.0,
+          "reason": "Unusual combination of Unit Price (Current) and ERP at 30 June 2023 relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||Labour Force": {
+      "x": "Unit Price (Current)",
+      "y": "Labour Force",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.0251,
+          "x_val": 2311300.0,
+          "y_val": 6897.0,
+          "reason": "Unusual combination of Unit Price (Current) and Labour Force relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||Value of building job(s)": {
+      "x": "Unit Price (Current)",
+      "y": "Value of building job(s)",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 17.3293,
+          "x_val": 2311300.0,
+          "y_val": 1805.727,
+          "reason": "Unusual combination of Unit Price (Current) and Value of building job(s) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 15.5684,
+          "x_val": 571833.3333,
+          "y_val": 9005.159,
+          "reason": "Unusual combination of Unit Price (Current) and Value of building job(s) relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||Pension Concession Card": {
+      "x": "Unit Price (Current)",
+      "y": "Pension Concession Card",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.1255,
+          "x_val": 2311300.0,
+          "y_val": 3705.0,
+          "reason": "Unusual combination of Unit Price (Current) and Pension Concession Card relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||Age Pension": {
+      "x": "Unit Price (Current)",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.0696,
+          "x_val": 2311300.0,
+          "y_val": 2840.0,
+          "reason": "Unusual combination of Unit Price (Current) and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.4507,
+          "x_val": 978750.0,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of Unit Price (Current) and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||Commonwealth Rent Assistance": {
+      "x": "Unit Price (Current)",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.1182,
+          "x_val": 2311300.0,
+          "y_val": 1155.0,
+          "reason": "Unusual combination of Unit Price (Current) and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||Listing Visits per Property": {
+      "x": "Unit Price (Current)",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.1896,
+          "x_val": 2311300.0,
+          "y_val": 1033.6,
+          "reason": "Unusual combination of Unit Price (Current) and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "Unit Price (Current)||Population density 2024 (persons/km2)": {
+      "x": "Unit Price (Current)",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 18.4539,
+          "x_val": 2311300.0,
+          "y_val": 434.4,
+          "reason": "Unusual combination of Unit Price (Current) and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||ERP at 30 June 2024": {
+      "x": "House Price (Current)",
+      "y": "ERP at 30 June 2024",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 7.3645,
+          "x_val": 2087500.0,
+          "y_val": 14680.0,
+          "reason": "Unusual combination of House Price (Current) and ERP at 30 June 2024 relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||ERP at 30 June 2023": {
+      "x": "House Price (Current)",
+      "y": "ERP at 30 June 2023",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 7.3697,
+          "x_val": 2087500.0,
+          "y_val": 14676.0,
+          "reason": "Unusual combination of House Price (Current) and ERP at 30 June 2023 relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||Labour Force": {
+      "x": "House Price (Current)",
+      "y": "Labour Force",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 7.3405,
+          "x_val": 2087500.0,
+          "y_val": 6897.0,
+          "reason": "Unusual combination of House Price (Current) and Labour Force relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||Value of building job(s)": {
+      "x": "House Price (Current)",
+      "y": "Value of building job(s)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 15.8399,
+          "x_val": 973125.0,
+          "y_val": 9005.159,
+          "reason": "Unusual combination of House Price (Current) and Value of building job(s) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 7.0213,
+          "x_val": 2087500.0,
+          "y_val": 1805.727,
+          "reason": "Unusual combination of House Price (Current) and Value of building job(s) relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||Pension Concession Card": {
+      "x": "House Price (Current)",
+      "y": "Pension Concession Card",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 7.7841,
+          "x_val": 2087500.0,
+          "y_val": 3705.0,
+          "reason": "Unusual combination of House Price (Current) and Pension Concession Card relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 6.2564,
+          "x_val": 850416.6667,
+          "y_val": 6900.0,
+          "reason": "Unusual combination of House Price (Current) and Pension Concession Card relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||Age Pension": {
+      "x": "House Price (Current)",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 8.0021,
+          "x_val": 2087500.0,
+          "y_val": 2840.0,
+          "reason": "Unusual combination of House Price (Current) and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.5985,
+          "x_val": 1418333.3333,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of House Price (Current) and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||Commonwealth Rent Assistance": {
+      "x": "House Price (Current)",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 7.6455,
+          "x_val": 2087500.0,
+          "y_val": 1155.0,
+          "reason": "Unusual combination of House Price (Current) and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||Listing Visits per Property": {
+      "x": "House Price (Current)",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 7.7158,
+          "x_val": 2087500.0,
+          "y_val": 1033.6,
+          "reason": "Unusual combination of House Price (Current) and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "House Price (Current)||Population density 2024 (persons/km2)": {
+      "x": "House Price (Current)",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 8.0669,
+          "x_val": 2087500.0,
+          "y_val": 434.4,
+          "reason": "Unusual combination of House Price (Current) and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||ERP at 30 June 2023": {
+      "x": "ERP at 30 June 2024",
+      "y": "ERP at 30 June 2023",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 14.9197,
+          "x_val": 22353.0,
+          "y_val": 21703.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and ERP at 30 June 2023 relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011032,
+          "sa2_name": "Gosford - Springfield",
+          "score": 8.3911,
+          "x_val": 22599.0,
+          "y_val": 22083.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and ERP at 30 June 2023 relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.9238,
+          "x_val": 25007.0,
+          "y_val": 24917.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and ERP at 30 June 2023 relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||Labour Force": {
+      "x": "ERP at 30 June 2024",
+      "y": "Labour Force",
+      "outliers": [
+        {
+          "sa2_code": 102011032,
+          "sa2_name": "Gosford - Springfield",
+          "score": 10.8895,
+          "x_val": 22599.0,
+          "y_val": 12894.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Labour Force relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.8186,
+          "x_val": 25007.0,
+          "y_val": 11795.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Labour Force relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||Value of building job(s)": {
+      "x": "ERP at 30 June 2024",
+      "y": "Value of building job(s)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.3294,
+          "x_val": 22353.0,
+          "y_val": 9005.159,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Value of building job(s) relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||Pension Concession Card": {
+      "x": "ERP at 30 June 2024",
+      "y": "Pension Concession Card",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 7.2002,
+          "x_val": 22353.0,
+          "y_val": 3885.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Pension Concession Card relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 6.5538,
+          "x_val": 22740.0,
+          "y_val": 6900.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Pension Concession Card relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||Age Pension": {
+      "x": "ERP at 30 June 2024",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 8.2034,
+          "x_val": 22353.0,
+          "y_val": 2075.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.4145,
+          "x_val": 25007.0,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021050,
+          "sa2_name": "Lake Munmorah - Mannering Park",
+          "score": 6.2764,
+          "x_val": 11055.0,
+          "y_val": 2750.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||Commonwealth Rent Assistance": {
+      "x": "ERP at 30 June 2024",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102021050,
+          "sa2_name": "Lake Munmorah - Mannering Park",
+          "score": 6.4614,
+          "x_val": 11055.0,
+          "y_val": 1885.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||Listing Visits per Property": {
+      "x": "ERP at 30 June 2024",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.2223,
+          "x_val": 22990.0,
+          "y_val": 2517.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2024||Population density 2024 (persons/km2)": {
+      "x": "ERP at 30 June 2024",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 6.2751,
+          "x_val": 22353.0,
+          "y_val": 521.2,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Population density 2024 (persons/km2) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.0511,
+          "x_val": 22990.0,
+          "y_val": 2117.0,
+          "reason": "Unusual combination of ERP at 30 June 2024 and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2023||Labour Force": {
+      "x": "ERP at 30 June 2023",
+      "y": "Labour Force",
+      "outliers": [
+        {
+          "sa2_code": 102011032,
+          "sa2_name": "Gosford - Springfield",
+          "score": 11.0421,
+          "x_val": 22083.0,
+          "y_val": 12894.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Labour Force relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.992,
+          "x_val": 24917.0,
+          "y_val": 11795.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Labour Force relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 5.9958,
+          "x_val": 21703.0,
+          "y_val": 12105.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Labour Force relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2023||Value of building job(s)": {
+      "x": "ERP at 30 June 2023",
+      "y": "Value of building job(s)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.3467,
+          "x_val": 21703.0,
+          "y_val": 9005.159,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Value of building job(s) relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2023||Pension Concession Card": {
+      "x": "ERP at 30 June 2023",
+      "y": "Pension Concession Card",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 6.6397,
+          "x_val": 21703.0,
+          "y_val": 3885.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Pension Concession Card relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 6.5457,
+          "x_val": 22631.0,
+          "y_val": 6900.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Pension Concession Card relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2023||Age Pension": {
+      "x": "ERP at 30 June 2023",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 7.7554,
+          "x_val": 21703.0,
+          "y_val": 2075.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021050,
+          "sa2_name": "Lake Munmorah - Mannering Park",
+          "score": 6.4259,
+          "x_val": 11082.0,
+          "y_val": 2750.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.4054,
+          "x_val": 24917.0,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2023||Commonwealth Rent Assistance": {
+      "x": "ERP at 30 June 2023",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102021050,
+          "sa2_name": "Lake Munmorah - Mannering Park",
+          "score": 6.4067,
+          "x_val": 11082.0,
+          "y_val": 1885.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2023||Listing Visits per Property": {
+      "x": "ERP at 30 June 2023",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.2973,
+          "x_val": 22931.0,
+          "y_val": 2517.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "ERP at 30 June 2023||Population density 2024 (persons/km2)": {
+      "x": "ERP at 30 June 2023",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.0857,
+          "x_val": 22931.0,
+          "y_val": 2117.0,
+          "reason": "Unusual combination of ERP at 30 June 2023 and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "Labour Force||Value of building job(s)": {
+      "x": "Labour Force",
+      "y": "Value of building job(s)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.2682,
+          "x_val": 12105.0,
+          "y_val": 9005.159,
+          "reason": "Unusual combination of Labour Force and Value of building job(s) relative to other SA2s"
+        }
+      ]
+    },
+    "Labour Force||Pension Concession Card": {
+      "x": "Labour Force",
+      "y": "Pension Concession Card",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 6.6775,
+          "x_val": 12105.0,
+          "y_val": 3885.0,
+          "reason": "Unusual combination of Labour Force and Pension Concession Card relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 6.3181,
+          "x_val": 10836.0,
+          "y_val": 6900.0,
+          "reason": "Unusual combination of Labour Force and Pension Concession Card relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011032,
+          "sa2_name": "Gosford - Springfield",
+          "score": 6.1442,
+          "x_val": 12894.0,
+          "y_val": 4795.0,
+          "reason": "Unusual combination of Labour Force and Pension Concession Card relative to other SA2s"
+        }
+      ]
+    },
+    "Labour Force||Age Pension": {
+      "x": "Labour Force",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 7.2976,
+          "x_val": 12105.0,
+          "y_val": 2075.0,
+          "reason": "Unusual combination of Labour Force and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011032,
+          "sa2_name": "Gosford - Springfield",
+          "score": 7.1406,
+          "x_val": 12894.0,
+          "y_val": 2505.0,
+          "reason": "Unusual combination of Labour Force and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.4519,
+          "x_val": 11795.0,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of Labour Force and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "Labour Force||Commonwealth Rent Assistance": {
+      "x": "Labour Force",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102021050,
+          "sa2_name": "Lake Munmorah - Mannering Park",
+          "score": 6.3239,
+          "x_val": 4742.0,
+          "y_val": 1885.0,
+          "reason": "Unusual combination of Labour Force and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "Labour Force||Listing Visits per Property": {
+      "x": "Labour Force",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.1337,
+          "x_val": 11600.0,
+          "y_val": 2517.0,
+          "reason": "Unusual combination of Labour Force and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "Labour Force||Population density 2024 (persons/km2)": {
+      "x": "Labour Force",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 7.6242,
+          "x_val": 12105.0,
+          "y_val": 521.2,
+          "reason": "Unusual combination of Labour Force and Population density 2024 (persons/km2) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.0424,
+          "x_val": 11600.0,
+          "y_val": 2117.0,
+          "reason": "Unusual combination of Labour Force and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "Value of building job(s)||Pension Concession Card": {
+      "x": "Value of building job(s)",
+      "y": "Pension Concession Card",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.617,
+          "x_val": 9005.159,
+          "y_val": 3885.0,
+          "reason": "Unusual combination of Value of building job(s) and Pension Concession Card relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 6.9284,
+          "x_val": 622.868,
+          "y_val": 6900.0,
+          "reason": "Unusual combination of Value of building job(s) and Pension Concession Card relative to other SA2s"
+        }
+      ]
+    },
+    "Value of building job(s)||Age Pension": {
+      "x": "Value of building job(s)",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.8846,
+          "x_val": 9005.159,
+          "y_val": 2075.0,
+          "reason": "Unusual combination of Value of building job(s) and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.0306,
+          "x_val": 2898.126,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of Value of building job(s) and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "Value of building job(s)||Commonwealth Rent Assistance": {
+      "x": "Value of building job(s)",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.5386,
+          "x_val": 9005.159,
+          "y_val": 1555.0,
+          "reason": "Unusual combination of Value of building job(s) and Commonwealth Rent Assistance relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 6.4223,
+          "x_val": 622.868,
+          "y_val": 2545.0,
+          "reason": "Unusual combination of Value of building job(s) and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "Value of building job(s)||Listing Visits per Property": {
+      "x": "Value of building job(s)",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 15.2106,
+          "x_val": 9005.159,
+          "y_val": 791.75,
+          "reason": "Unusual combination of Value of building job(s) and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "Value of building job(s)||Population density 2024 (persons/km2)": {
+      "x": "Value of building job(s)",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102021056,
+          "sa2_name": "Warnervale - Wadalba",
+          "score": 16.3146,
+          "x_val": 9005.159,
+          "y_val": 521.2,
+          "reason": "Unusual combination of Value of building job(s) and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "Pension Concession Card||Age Pension": {
+      "x": "Pension Concession Card",
+      "y": "Age Pension",
+      "outliers": [
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 9.2969,
+          "x_val": 6900.0,
+          "y_val": 3545.0,
+          "reason": "Unusual combination of Pension Concession Card and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 7.1127,
+          "x_val": 6630.0,
+          "y_val": 4255.0,
+          "reason": "Unusual combination of Pension Concession Card and Age Pension relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011031,
+          "sa2_name": "Erina - Green Point",
+          "score": 6.3756,
+          "x_val": 3705.0,
+          "y_val": 2840.0,
+          "reason": "Unusual combination of Pension Concession Card and Age Pension relative to other SA2s"
+        }
+      ]
+    },
+    "Pension Concession Card||Commonwealth Rent Assistance": {
+      "x": "Pension Concession Card",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 7.9673,
+          "x_val": 5450.0,
+          "y_val": 1465.0,
+          "reason": "Unusual combination of Pension Concession Card and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "Pension Concession Card||Listing Visits per Property": {
+      "x": "Pension Concession Card",
+      "y": "Listing Visits per Property",
+      "outliers": []
+    },
+    "Pension Concession Card||Population density 2024 (persons/km2)": {
+      "x": "Pension Concession Card",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 6.9339,
+          "x_val": 6900.0,
+          "y_val": 2021.5,
+          "reason": "Unusual combination of Pension Concession Card and Population density 2024 (persons/km2) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.106,
+          "x_val": 6630.0,
+          "y_val": 991.2,
+          "reason": "Unusual combination of Pension Concession Card and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "Age Pension||Commonwealth Rent Assistance": {
+      "x": "Age Pension",
+      "y": "Commonwealth Rent Assistance",
+      "outliers": [
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.4683,
+          "x_val": 4255.0,
+          "y_val": 2455.0,
+          "reason": "Unusual combination of Age Pension and Commonwealth Rent Assistance relative to other SA2s"
+        }
+      ]
+    },
+    "Age Pension||Listing Visits per Property": {
+      "x": "Age Pension",
+      "y": "Listing Visits per Property",
+      "outliers": [
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 6.446,
+          "x_val": 4255.0,
+          "y_val": 1366.0,
+          "reason": "Unusual combination of Age Pension and Listing Visits per Property relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.0055,
+          "x_val": 3350.0,
+          "y_val": 2517.0,
+          "reason": "Unusual combination of Age Pension and Listing Visits per Property relative to other SA2s"
+        }
+      ]
+    },
+    "Age Pension||Population density 2024 (persons/km2)": {
+      "x": "Age Pension",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102011040,
+          "sa2_name": "Umina - Booker Bay - Patonga",
+          "score": 7.5993,
+          "x_val": 4255.0,
+          "y_val": 991.2,
+          "reason": "Unusual combination of Age Pension and Population density 2024 (persons/km2) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 5.9966,
+          "x_val": 3350.0,
+          "y_val": 2117.0,
+          "reason": "Unusual combination of Age Pension and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "Commonwealth Rent Assistance||Listing Visits per Property": {
+      "x": "Commonwealth Rent Assistance",
+      "y": "Listing Visits per Property",
+      "outliers": []
+    },
+    "Commonwealth Rent Assistance||Population density 2024 (persons/km2)": {
+      "x": "Commonwealth Rent Assistance",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 7.0925,
+          "x_val": 2545.0,
+          "y_val": 2021.5,
+          "reason": "Unusual combination of Commonwealth Rent Assistance and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    },
+    "Listing Visits per Property||Population density 2024 (persons/km2)": {
+      "x": "Listing Visits per Property",
+      "y": "Population density 2024 (persons/km2)",
+      "outliers": [
+        {
+          "sa2_code": 102021048,
+          "sa2_name": "Gorokan - Kanwal - Charmhaven",
+          "score": 7.104,
+          "x_val": 951.8333,
+          "y_val": 2021.5,
+          "reason": "Unusual combination of Listing Visits per Property and Population density 2024 (persons/km2) relative to other SA2s"
+        },
+        {
+          "sa2_code": 102021044,
+          "sa2_name": "Bateau Bay - Killarney Vale",
+          "score": 6.8998,
+          "x_val": 2517.0,
+          "y_val": 2117.0,
+          "reason": "Unusual combination of Listing Visits per Property and Population density 2024 (persons/km2) relative to other SA2s"
+        }
+      ]
+    }
+  }
+}

@@ -124,6 +124,78 @@
     #qa-api-key { display: none; }
     .qa-key-save { display: none; }
     .qa-hint { font-size: 0.68rem; color: #aaa; margin-top: 3px; }
+
+    /* ── Analytics Panel ── */
+    .analytics-toggle {
+      position: fixed; bottom: 0; left: 310px;
+      background: #003366; color: white; border: none;
+      padding: 7px 16px; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+      border-radius: 6px 6px 0 0; z-index: 999;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .analytics-toggle:hover { background: #004a99; }
+    .analytics-panel {
+      display: none;
+      position: fixed; bottom: 0; left: 310px;
+      width: calc(100vw - 310px - 320px); background: white;
+      border-top: 2px solid #003366; border-left: 1px solid #dde; border-right: 1px solid #dde;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.12); z-index: 998;
+      font-size: 0.82rem;
+    }
+    .analytics-panel.open { display: block; }
+    .analytics-panel-inner {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+      max-height: 240px;
+    }
+    .analytics-section {
+      padding: 12px 14px; border-right: 1px solid #eee; overflow-y: auto;
+    }
+    .analytics-section:last-child { border-right: none; }
+    .analytics-section h4 {
+      font-size: 0.7rem; text-transform: uppercase; color: #666;
+      letter-spacing: .05em; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .analytics-section h4 .badge-method {
+      background: #e8f0fe; color: #1a56db; padding: 1px 6px;
+      border-radius: 8px; font-size: 0.62rem; text-transform: none; letter-spacing: 0;
+    }
+    .corr-list { list-style: none; margin: 0; padding: 0; }
+    .corr-list li { margin-bottom: 4px; }
+    .corr-btn {
+      background: none; border: 1px solid #dde; border-radius: 4px;
+      padding: 3px 8px; font-size: 0.75rem; cursor: pointer; color: #003366;
+      display: flex; justify-content: space-between; align-items: center; width: 100%;
+      text-align: left; transition: background 0.15s;
+    }
+    .corr-btn:hover { background: #f0f4ff; border-color: #003366; }
+    .corr-btn.positive .corr-val { color: #166534; font-weight: 700; }
+    .corr-btn.negative .corr-val { color: #991b1b; font-weight: 700; }
+    .corr-none { color: #aaa; font-style: italic; font-size: 0.75rem; }
+    .cluster-info { font-size: 0.78rem; color: #555; margin-bottom: 6px; }
+    .cluster-dot {
+      display: inline-block; width: 10px; height: 10px;
+      border-radius: 50%; margin-right: 5px; vertical-align: middle;
+    }
+    .cluster-toggle {
+      background: #f0f4ff; border: 1px solid #003366; color: #003366;
+      padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer;
+      margin-top: 6px;
+    }
+    .cluster-toggle.active { background: #003366; color: white; }
+    .outlier-list { list-style: none; margin: 0; padding: 0; }
+    .outlier-list li {
+      margin-bottom: 5px; padding: 4px 8px;
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: 4px;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .outlier-list li:hover { background: #fef3c7; }
+    .outlier-name { font-weight: 600; color: #003366; font-size: 0.78rem; }
+    .outlier-reason { color: #666; font-size: 0.7rem; margin-top: 1px; }
+    .outlier-none { color: #aaa; font-style: italic; font-size: 0.75rem; }
+    .analytics-panel-close {
+      position: absolute; top: 8px; right: 10px;
+      background: none; border: none; font-size: 1rem; cursor: pointer; color: #666;
+    }
   </style>
 </head>
 <body>
@@ -188,6 +260,34 @@
         <thead><tr><th>Indicator</th><th>Content Area</th><th>Dataset</th><th>Frequency</th><th>Latest Period</th></tr></thead>
         <tbody id="info-tbody"></tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<!-- ── Analytics Toggle Button ── -->
+<button class="analytics-toggle" id="analytics-toggle-btn" onclick="toggleAnalytics()">
+  📊 Analytics
+  <span id="analytics-toggle-icon">▲</span>
+</button>
+
+<!-- ── Analytics Panel ── -->
+<div class="analytics-panel" id="analytics-panel">
+  <button class="analytics-panel-close" onclick="toggleAnalytics()">✕</button>
+  <div class="analytics-panel-inner">
+    <!-- Correlations -->
+    <div class="analytics-section" id="corr-section">
+      <h4>Correlated Indicators <span class="badge-method">Pearson</span></h4>
+      <div id="corr-content"><p class="corr-none">Select an indicator to see correlations</p></div>
+    </div>
+    <!-- Clusters -->
+    <div class="analytics-section" id="cluster-section">
+      <h4>SA2 Clusters <span class="badge-method">k-means</span></h4>
+      <div id="cluster-content"><p class="corr-none">Select an indicator to see clustering</p></div>
+    </div>
+    <!-- Outliers -->
+    <div class="analytics-section" id="outlier-section">
+      <h4>Unusual SA2s <span class="badge-method">Mahalanobis</span></h4>
+      <div id="outlier-content"><p class="outlier-none">Select an indicator to see outliers</p></div>
     </div>
   </div>
 </div>
@@ -583,6 +683,213 @@ function toggleInfo() {
 }
 
 buildInfoTable();
+
+// ── ANALYTICS FEATURE CODE ──────────────────────────────────────────────
+let analyticsOpen = false;
+let correlationsData = null;
+let clustersData = null;
+let outliersData = null;
+let clusterOverlayActive = false;
+let clusterColors = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00'];
+
+// Load all analytics data upfront
+Promise.all([
+  fetch('public/data/correlations.json').then(r=>r.json()).catch(()=>null),
+  fetch('public/data/clusters.json').then(r=>r.json()).catch(()=>null),
+  fetch('public/data/outliers.json').then(r=>r.json()).catch(()=>null),
+]).then(([c, cl, o]) => {
+  correlationsData = c;
+  clustersData = cl;
+  outliersData = o;
+  if (selectedIndicator) updateAnalyticsPanel(selectedIndicator);
+});
+
+function toggleAnalytics() {
+  analyticsOpen = !analyticsOpen;
+  document.getElementById('analytics-panel').classList.toggle('open', analyticsOpen);
+  document.getElementById('analytics-toggle-icon').textContent = analyticsOpen ? '▼' : '▲';
+}
+
+// Hook into existing indicator change — refresh analytics panel
+const _origIndChange = indSel.onchange;
+indSel.addEventListener('change', () => updateAnalyticsPanel(indSel.value));
+
+function updateAnalyticsPanel(indicator) {
+  updateCorrelationPanel(indicator);
+  updateClusterPanel(indicator);
+  updateOutlierPanel(indicator);
+}
+
+// ── Correlation Panel ──────────────────────────────────────────────────
+function updateCorrelationPanel(indicator) {
+  const el = document.getElementById('corr-content');
+  if (!correlationsData || !correlationsData.indicators) {
+    el.innerHTML = '<p class="corr-none">Correlation data unavailable</p>'; return;
+  }
+  const data = correlationsData.indicators[indicator];
+  if (!data) { el.innerHTML = '<p class="corr-none">No correlations for this indicator</p>'; return; }
+
+  const pos = data.positive || [];
+  const neg = data.negative || [];
+
+  if (!pos.length && !neg.length) {
+    el.innerHTML = '<p class="corr-none">No significant correlations (|r| ≥ 0.3)</p>';
+    return;
+  }
+
+  let html = '';
+  if (pos.length) {
+    html += '<div style="font-size:0.68rem;color:#166534;font-weight:600;margin-bottom:4px">▲ Positively correlated</div><ul class="corr-list">';
+    pos.forEach(item => {
+      html += `<li><button class="corr-btn positive" onclick="switchIndicator('${escHtml(item.indicator)}')" title="Click to select this indicator">`+
+        `<span>${escHtml(item.indicator)}</span><span class="corr-val">r = ${item.value.toFixed(2)}</span></button></li>`;
+    });
+    html += '</ul>';
+  }
+  if (neg.length) {
+    html += '<div style="font-size:0.68rem;color:#991b1b;font-weight:600;margin:6px 0 4px">▼ Negatively correlated</div><ul class="corr-list">';
+    neg.forEach(item => {
+      html += `<li><button class="corr-btn negative" onclick="switchIndicator('${escHtml(item.indicator)}')" title="Click to select this indicator">`+
+        `<span>${escHtml(item.indicator)}</span><span class="corr-val">r = ${item.value.toFixed(2)}</span></button></li>`;
+    });
+    html += '</ul>';
+  }
+  html += '<p style="font-size:0.65rem;color:#aaa;margin-top:8px">Click an indicator to select it. Pearson r, n=' + (SA2_DATA.length) + ' SA2s.</p>';
+  el.innerHTML = html;
+}
+
+function switchIndicator(name) {
+  // Switch the main indicator and update everything
+  const opt = [...indSel.options].find(o => o.value === name);
+  if (opt) {
+    indSel.value = name;
+    selectedIndicator = name;
+    updateChoropleth();
+    updateBarChart();
+    updateAnalyticsPanel(name);
+  }
+}
+
+// ── Cluster Panel ──────────────────────────────────────────────────────
+let activePairKey = null;
+
+function updateClusterPanel(indicator) {
+  const el = document.getElementById('cluster-content');
+  if (!clustersData || !clustersData.pairs) {
+    el.innerHTML = '<p class="corr-none">Cluster data unavailable</p>'; return;
+  }
+
+  // Find best pair involving this indicator
+  const pairs = Object.values(clustersData.pairs).filter(p => p.x === indicator || p.y === indicator);
+  if (!pairs.length) {
+    el.innerHTML = '<p class="corr-none">No cluster pairs for this indicator</p>';
+    clusterOverlayActive = false;
+    return;
+  }
+
+  const best = pairs.sort((a,b) => b.silhouette - a.silhouette)[0];
+  const otherMetric = best.x === indicator ? best.y : best.x;
+  activePairKey = best.x + '||' + best.y;
+
+  const activeClass = clusterOverlayActive ? 'active' : '';
+  el.innerHTML = `
+    <p class="cluster-info"><strong>${best.k} clusters</strong> · silhouette = ${best.silhouette} · n=${best.assignments.length}</p>
+    <p class="cluster-info" style="color:#888">Paired with: <em>${escHtml(otherMetric)}</em></p>
+    ${clusterColors.slice(0, best.k).map((c, i) => {
+      const members = best.assignments.filter(a => a.cluster === i);
+      return `<div style="margin-bottom:3px"><span class="cluster-dot" style="background:${c}"></span>${members.length} SA2s in cluster ${i+1}</div>`;
+    }).join('')}
+    <button class="cluster-toggle ${activeClass}" onclick="toggleClusterOverlay()" id="cluster-overlay-btn">
+      ${clusterOverlayActive ? '✓ Clusters visible on map' : 'Show clusters on map'}
+    </button>
+    <p style="font-size:0.65rem;color:#aaa;margin-top:8px">k-means on ${indicator} &amp; ${escHtml(otherMetric)}. Overlay colours SA2s by cluster.</p>
+  `;
+}
+
+function toggleClusterOverlay() {
+  clusterOverlayActive = !clusterOverlayActive;
+  const btn = document.getElementById('cluster-overlay-btn');
+  if (btn) {
+    btn.className = 'cluster-toggle' + (clusterOverlayActive ? ' active' : '');
+    btn.textContent = clusterOverlayActive ? '✓ Clusters visible on map' : 'Show clusters on map';
+  }
+
+  if (clusterOverlayActive && clustersData && activePairKey && clustersData.pairs[activePairKey]) {
+    applyClusterOverlay(clustersData.pairs[activePairKey]);
+  } else {
+    // Restore normal choropleth
+    updateChoropleth();
+  }
+}
+
+function applyClusterOverlay(pair) {
+  const assignmentMap = {};
+  pair.assignments.forEach(a => { if (a.sa2_code) assignmentMap[String(a.sa2_code)] = a.cluster; });
+
+  if (geojsonLayer) geojsonLayer.remove();
+  geojsonLayer = L.geoJSON(SA2_GEOJSON, {
+    style: feature => {
+      const code = feature.properties.SA2_CODE21;
+      const cluster = assignmentMap[String(code)];
+      const color = cluster != null ? clusterColors[cluster] : '#cccccc';
+      return { fillColor: color, weight: 1.5, color: '#fff', fillOpacity: 0.75 };
+    },
+    onEachFeature: (feature, layer) => {
+      const code = feature.properties.SA2_CODE21;
+      const name = feature.properties.SA2_NAME21;
+      const cluster = assignmentMap[String(code)];
+      const clusterLabel = cluster != null ? `Cluster ${cluster + 1}` : 'No data';
+      layer.bindTooltip(`<strong>${name}</strong><br/>Cluster: ${clusterLabel}`, {sticky:true});
+      layer.on('click', () => selectSA2(code));
+    }
+  }).addTo(map);
+}
+
+// ── Outlier Panel ──────────────────────────────────────────────────────
+function updateOutlierPanel(indicator) {
+  const el = document.getElementById('outlier-content');
+  if (!outliersData || !outliersData.pairs) {
+    el.innerHTML = '<p class="outlier-none">Outlier data unavailable</p>'; return;
+  }
+
+  // Collect all outliers that involve this indicator
+  const allOutliers = [];
+  Object.values(outliersData.pairs).forEach(pair => {
+    if (pair.x !== indicator && pair.y !== indicator) return;
+    const otherMetric = pair.x === indicator ? pair.y : pair.x;
+    pair.outliers.forEach(o => {
+      allOutliers.push({ ...o, pairedWith: otherMetric });
+    });
+  });
+
+  if (!allOutliers.length) {
+    el.innerHTML = '<p class="outlier-none">No unusual SA2s detected for this indicator</p>';
+    return;
+  }
+
+  // Deduplicate by SA2 name, keep highest score
+  const seen = {};
+  allOutliers.forEach(o => {
+    if (!seen[o.sa2_name] || o.score > seen[o.sa2_name].score) seen[o.sa2_name] = o;
+  });
+  const ranked = Object.values(seen).sort((a,b) => b.score - a.score).slice(0, 5);
+
+  let html = '<ul class="outlier-list">';
+  ranked.forEach(o => {
+    const code = o.sa2_code ? String(o.sa2_code) : '';
+    html += `<li onclick="${code ? `selectSA2('${code}')` : ''}">`+
+      `<div class="outlier-name">⚠ ${escHtml(o.sa2_name)}</div>`+
+      `<div class="outlier-reason">${escHtml(o.reason)} (vs ${escHtml(o.pairedWith)})</div>`+
+      `</li>`;
+  });
+  html += '</ul>';
+  html += '<p style="font-size:0.65rem;color:#aaa;margin-top:8px">Unusual = high Mahalanobis distance relative to other SA2s.</p>';
+  el.innerHTML = html;
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
 // ── INIT ────────────────────────────────────────────────────────────────
 let SA2_GEOJSON;
